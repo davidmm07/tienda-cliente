@@ -1,6 +1,5 @@
-import { Sublevel } from './sublevel';
 
-export class Category{
+export class Sublevel{
 	constructor(
 		public name: string,
 		public sublevels: Sublevel

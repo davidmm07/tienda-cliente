@@ -1,0 +1,14 @@
+<div class="head-page" *ngIf="identity">
+	<h1>{{titulo}}</h1>
+	<a routerLink="/add-category" *ngIf="identity.role =='ROLE_ADMIN'" class="btn btn-info">
+		Añadir Categoria
+	</a>
+</div>
+
+<div class="clearfix"></div>
+	<ul class="category-list" *ngIf="identity">
+<!-- 		<li *ngFor="let category of categories" class="col-lg-3 category-item">
+			{{category.name}}
+		</li> -->
+		<label>menu de categorias</label>
+	</ul>

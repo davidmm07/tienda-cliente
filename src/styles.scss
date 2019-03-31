@@ -4,6 +4,12 @@ html, body{
 	height: 100%;
 	background: #eee;
 }
+
+.active-link{
+	border-bottom: 4px solid #00bd04;
+	padding-bottom: 4px;
+}
+
 .head-title{
 	font-size: 20px;
 	font-weight: bold;
@@ -11,7 +17,9 @@ html, body{
 	margin-bottom: 25px;
 	display: block;
 }
+
 $backgroundnav: #1C1C1F;
+
 .navigation{
 	text-align: center;
 	color: white;
@@ -34,14 +42,17 @@ $backgroundnav: #1C1C1F;
 		width:100%;
 
 	}
+
+
+
 }
 
 #user_logged{
 	background: $backgroundnav;
 	position: absolute;
 	bottom: 0px;
-	border-top: 1px solid #444;
-	width: 75%;
+	border-top: 1px solid #444 ;
+	width: 85%;
 	.icon-logout{
 		font-size: 16px;
 		cursor:pointer;
@@ -60,4 +71,3 @@ $backgroundnav: #1C1C1F;
 	}
 
 }
-

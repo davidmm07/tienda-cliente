@@ -1,0 +1,25 @@
+<div class="col-lg-6" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
+<h1>{{titulo}}</h1>
+<div *ngIf="alertMessage">
+	<div class="alert alert-info" role="alert">
+		{{alertMessage}}
+	</div>      
+</div>
+<form #formCategory="ngForm" (ngSubmit)="onSubmit()" >
+	<p>
+		<label>Nombre: </label>
+		<input type="text" #name="ngModel" name="name" [(ngModel)]="category.name" class="form-control" required/>
+		<span *ngIf="!name.valid && name.touched">
+			El nombre es obligatorio
+		</span>
+	</p>
+	<input type="submit" value="{{titulo}}" [disabled]="!formCategory.form.valid" class="btn-success" />
+</form>
+</div>
+
+<div class="col-lg-6" *ngIf="!identity || identity.role != 'ROLE_ADMIN'">
+<h1>Error</h1>
+<p>
+	No tienes acceso a esta parte de la aplicación
+</p>
+	</div>

@@ -13,7 +13,7 @@
   	<fa-icon [icon]="[fas,'search']" aria-hidden="true"></fa-icon>
   	Buscar
   </a>
-  <a routerLink="/category/1">
+  <a routerLink="/menu-category" routerLinkActive="active-link">
   	<fa-icon icon="layer-group" aria-hidden="true"></fa-icon>
   	<!-- ['fas', 'coffee'] is an array that indicates the [prefix, iconName] -->
   	Categorias
@@ -30,7 +30,7 @@
   	</div>
    <span id="identity_name">{{identity.name}} </span>
   <br/>
-  <a routerLink="/mis-datos">
+  <a routerLink="/mis-datos" routerLinkActive="active-link">
   	<!-- ['fas', 'coffee'] is an array that indicates the [prefix, iconName] -->
   	<fa-icon [icon]="[fas,'cog']" aria-hidden="true"></fa-icon>
   	Mis datos

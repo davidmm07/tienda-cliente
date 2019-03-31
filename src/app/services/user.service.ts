@@ -4,6 +4,12 @@ import {map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GLOBAL } from './global';
 
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+    }),
+}
+
 @Injectable()
 export class UserService{
 	public identity;
@@ -20,18 +26,16 @@ export class UserService{
 
 		let params = JSON.stringify(userToLogin);
 
-		let headers = new HttpHeaders({'Content-Type':'application/json'});
 
-		return this._http.post(this.url+'login', params, {headers: headers});
+		return this._http.post(this.url+'login', params, httpOptions);
 	}
 
 	registerUser(userToRegister):Observable<any>{
 
 		let params = JSON.stringify(userToRegister);
 
-		let headers = new HttpHeaders({'Content-Type':'application/json'});
 
-		return this._http.post(this.url+'register', params, {headers: headers});
+		return this._http.post(this.url+'register', params, httpOptions);
 	}
 
 	updateUser(userToUpdate):Observable<any>{

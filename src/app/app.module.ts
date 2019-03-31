@@ -6,7 +6,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit.component';
-import { CategoryListComponent } from './components/category-list.component';
+import { MenuComponent } from './components/menu.component';
+import { CategoryAddComponent } from './components/category-add.component';
+import { CategoryEditComponent} from './components/category-edit.component';
+import { HomeComponent } from './components/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +21,10 @@ library.add(fas);
   declarations: [
     AppComponent,
     UserEditComponent,
-    CategoryListComponent
+    MenuComponent,
+    CategoryAddComponent,
+    CategoryEditComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
