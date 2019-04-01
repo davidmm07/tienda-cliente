@@ -1,0 +1,14 @@
+<a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}" (click)="onItemSelected(item)"
+   [ngClass]="{'active': item._id ? router.isActive(item._id, true): false, 'expanded': expanded}"
+   class="menu-item">
+<fa-icon [icon]="[fas,'carrot']" aria-hidden="true" class="routeIcon"></fa-icon>
+  {{item.name}}
+  <span class="d-flex p-2 bd-highlight" *ngIf="validateSublevels(item)">
+    <span class="d-flex p-2 bd-highlight"></span>
+    <fa-icon [icon]="[fas,'sort-down']" aria-hidden="true" [@indicatorRotate]="expanded ? 'expanded': 'collapsed'"></fa-icon>
+  </span>
+</a>
+<div *ngIf="expanded">
+  <menu-item *ngFor="let child of item.sublevels" [item]="child" [depth]="depth+1">
+  </menu-item>
+</div>

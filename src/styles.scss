@@ -1,12 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-html, body{
-	margin: 0px;
-	height: 100%;
-	background: #eee;
-}
+
+@import './app/app.component';
+
+
 
 .active-link{
-	border-bottom: 4px solid #00bd04;
+	border-bottom: 4px solid #f5ebeb;
 	padding-bottom: 4px;
 }
 
@@ -52,7 +51,7 @@ $backgroundnav: #1C1C1F;
 	position: absolute;
 	bottom: 0px;
 	border-top: 1px solid #444 ;
-	width: 85%;
+	width: 75%;
 	.icon-logout{
 		font-size: 16px;
 		cursor:pointer;

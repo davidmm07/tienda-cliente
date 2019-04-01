@@ -10,5 +10,17 @@
 <!-- 		<li *ngFor="let category of categories" class="col-lg-3 category-item">
 			{{category.name}}
 		</li> -->
-		<label>menu de categorias</label>
+		<a class="btn btn-info btn-md" (click)="navService.openNav()" role="button" >Ver Categorías</a>
+
 	</ul>
+
+	<div *ngIf="identity">	
+		<mat-sidenav-container >
+			<mat-sidenav #appDrawer mode="over" opened="false">
+				<mat-nav-list>
+					<menu-item *ngFor="let item of categories" [item]="item"></menu-item> 
+				</mat-nav-list>
+			</mat-sidenav>
+
+		</mat-sidenav-container>
+	</div>

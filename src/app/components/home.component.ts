@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { UserService } from '../services/user.service';
+import { NavService} from '../services/nav.service';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _userService: UserService,
+		public navService: NavService
+
 	) {
 		this.titulo = 'Home';
 		this.identity = this._userService.getIdentity() ;

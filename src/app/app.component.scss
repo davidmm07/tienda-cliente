@@ -1,0 +1,72 @@
+@import '.././assets/scss/breakpoints';
+@import '.././assets/scss/themes';
+
+@include mat-core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component that you are using.
+@include angular-material-theme($app-theme);
+
+
+body {
+	margin: 0;
+	height: 100vh;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 16px;
+	color: #292a1d;
+}
+a {
+	text-decoration-color: mat-color($app-warn);
+	color: mat-color($app-warn);
+}
+
+
+
+
+.mat-sidenav {
+	width: 360px;
+}
+.mat-sidenav-container {
+	background-color: white !important;
+	height: 80vh;	
+}
+
+.mat-nav-list {
+	padding-top: 0;
+}
+
+.menu-item{
+	.mat-list-item {
+		flex: 1 1 100%;
+	}
+
+	:host {
+		display: flex;
+		flex-direction: column;
+		outline: none;
+		width: 100%;
+
+		.mat-list-item.active {
+			background-color: mat-color($app-warn, 50);
+		}
+		&:hover,
+		&:focus {
+			>.mat-list-item:not(.expanded) {
+				background-color: mat-color($app-warn, 100) !important;
+			}
+		}
+	}
+
+	.mat-list-item {
+		padding: 8px 0;
+		display: flex;
+		width: auto;
+
+		.routeIcon {
+			margin-right: 40px;
+		}
+	}
+
+
+}
+

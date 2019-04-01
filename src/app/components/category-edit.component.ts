@@ -34,7 +34,7 @@ export class CategoryEditComponent implements OnInit {
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
-		this.category = new Category('',null);
+		this.category = new Category('','',null);
 		this.isEdit = true;
 
 	}

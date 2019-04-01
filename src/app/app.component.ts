@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { UserService } from './services/user.service';
-import { User } from './models/user';
-import { GLOBAL } from './services/global';
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
+import { GLOBAL } from './services/global';
+import { User } from './models/user';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
 
   constructor(
     private _userService: UserService,
-    private _router: Router
+    private _router: Router,
   ){
     this.user = new User('','', '', '', '', 'ROLE_USER', '');
     this.user_register = new User('','', '', '', '', 'ROLE_USER', '');
@@ -110,4 +110,7 @@ export class AppComponent implements OnInit{
     this.token = null;
     this._router.navigate(["/"]);
   }
+
+
+
 }
