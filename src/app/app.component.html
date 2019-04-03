@@ -1,13 +1,15 @@
-
-  <div class="row">
-<div *ngIf="identity" class="navigation col-lg-1">
+<div class="row">
+<div *ngIf="identity" class=" nav-global col-lg-1">
+  <div class="nav-menu">
   <h1 class="head-title">
-  	<a routerLink="/">
-  		<fa-icon [icon]="[fas,'store']" aria-hidden="true"></fa-icon>
+  	<a routerLink="/" [matMenuTriggerFor]="menu">
+  		<fa-icon [icon]="[fas,'store']" aria-hidden="true" ></fa-icon>
     	{{title}}
     </a>
   </h1>
-  <nav id="navigation">
+  </div>
+  <mat-menu class="navigation" #menu="matMenu">
+  <nav >
   <a href="#">
   	<!-- ['fas', 'coffee'] is an array that indicates the [prefix, iconName] -->
   	<fa-icon [icon]="[fas,'search']" aria-hidden="true" ></fa-icon>
@@ -23,8 +25,7 @@
   	<!-- ['fas', 'coffee'] is an array that indicates the [prefix, iconName] -->
   	Productos
   </a>    
-  </nav>
-  <nav id="user_logged">
+  <div id="user_logged">
   	<div class="user-image" *ngIf="identity.image && identity.image != 'null'">
   		<img id="image-logged" src="{{url+'get-image-file/'+identity.image}}">
   	</div>
@@ -40,48 +41,58 @@
   	<fa-icon class="icon-logout" [icon]="[fas,'sign-out-alt']" aria-hidden="true"></fa-icon>
   	Salir
   </a>
+</div>
   </nav>
+</mat-menu>  
+
+
+</div>
 </div>
 
-
-<div *ngIf="identity" class="central col-lg-11">
+<div *ngIf="identity" class="row">
+<div  class="central col-lg-12">
   <router-outlet></router-outlet>
 </div>
-
 </div>
 
 <div class="col-lg-11" *ngIf="!identity">
+  <mat-tab-group>
   <div class="row">
-  <div class="col-lg-6">
+  <mat-tab mat-button label="Login">
+  <div class="col-lg-6" >
     <h1>Identificate</h1>
     <div *ngIf="errorMessage">
-    	<div class="alert alert-info" role="alert">
+    	<div class="alert alert-warning" role="alert">
     		<strong> Error: </strong>{{errorMessage}}
     	</div>      
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form-signin"  ngNativeValidate>
       <p>
-        <label> Correo electrónico</label>
-        <input type="text" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required/>
+        <mat-form-field class="full-width">
+             <input matInput placeholder="Correo electrónico" #email="ngModel" [(ngModel)]="user.email" name="email" class="form-control" required>
+             </mat-form-field>
         <span *ngIf="!email.valid && email.touched">
           El email es obligatorio
         </span>
       </p>
       <p>
-        <label> Contraseña</label>
-        <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-control" required/>
+        <mat-form-field class="full-width">
+           <input matInput placeholder="Contraseña" #password="ngModel" [(ngModel)]="user.password "type="password" name="password" class="form-control" required>
+         </mat-form-field>
       </p>
         <input type="submit" value="Entrar" class="btn btn-primary"/>
     </form>
   </div>
-  <div class="col-lg-6">
+  </mat-tab>  
+    <mat-tab mat-button label="Register">
+  <div class="col-lg-6" >
     <h1>Registrate</h1>
     <div *ngIf="alertRegister">
     	<div class="alert alert-info" role="alert">
     		{{alertRegister}}
     	</div>      
     </div>
-    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" class="col-md-10">
+    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" class="col-md-10 form-signin"  ngNativeValidate>
       <p>
         <label>Nombre:</label>
         <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" class="form-control" required/>
@@ -113,5 +124,7 @@
         <input type="submit" value="Registrarse" class="btn btn-primary"/>
     </form>
   </div>
+ </mat-tab>
 </div>
+</mat-tab-group>
 </div>

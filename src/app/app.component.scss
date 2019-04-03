@@ -14,6 +14,8 @@ body {
 	font-family: Roboto, Arial, sans-serif;
 	font-size: 16px;
 	color: #292a1d;
+	overflow-x: hidden;
+
 }
 a {
 	text-decoration-color: mat-color($app-warn);
@@ -21,7 +23,26 @@ a {
 }
 
 
+@include breakpoint-max($large-tablet) {
+  .fixed-topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% !important;
+  }
 
+  .mat-drawer-container,
+  .mat-drawer {
+    padding-top: 56px;
+  }
+  .nav-menu{
+	text-align: center;
+	border-radius: 0%;
+
+}
+
+}
 
 .mat-sidenav {
 	width: 360px;
@@ -70,3 +91,6 @@ a {
 
 }
 
+.full-width {
+  width: 100%;
+}

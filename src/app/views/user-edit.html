@@ -5,7 +5,7 @@
 			{{alertMessage}}
 		</div>      
 	</div>
-	<form #userUpdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10">
+	<form #userUpdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10 form-signin"  ngNativeValidate>
 		<p>
 			<label>Nombre:</label>
 			<input type="text" #name="ngModel" name="name" [(ngModel)]="user.name" class="form-control" required/>

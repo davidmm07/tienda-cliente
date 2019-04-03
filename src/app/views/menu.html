@@ -1,4 +1,5 @@
-<div class="head-page" *ngIf="identity">
+<div *ngIf="identity">
+<div class="head-page">
 	<h1>{{titulo}}</h1>
 	<a routerLink="/add-category" *ngIf="identity.role =='ROLE_ADMIN'" class="btn btn-info">
 		Añadir Categoria
@@ -14,13 +15,21 @@
 
 	</ul>
 
-	<div *ngIf="identity">	
+<div class="row">
+	
+	<div class="col-lg-6" >	
 		<mat-sidenav-container >
-			<mat-sidenav #appDrawer mode="over" opened="false">
+			<mat-sidenav #appDrawer mode="side" opened="false">
 				<mat-nav-list>
-					<menu-item *ngFor="let item of categories" [item]="item"></menu-item> 
+					<menu-item *ngFor="let item of categories" [item]="item" (get-leaf)="onGetLeaf($event)"></menu-item> 
 				</mat-nav-list>
 			</mat-sidenav>
 
 		</mat-sidenav-container>
 	</div>
+	<div class="col-lg-6" *ngIf="itemselected">
+
+					<product-list [sublevelnotchild]="itemselected"></product-list> 
+	</div>	
+</div>
+</div>	

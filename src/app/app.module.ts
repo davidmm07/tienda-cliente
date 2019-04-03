@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu.component';
 import { MenuItemComponent } from './components/menu-item.component';
 import { CategoryAddComponent } from './components/category-add.component';
 import { CategoryEditComponent} from './components/category-edit.component';
+import { ProductListComponent} from './components/product-list.component';
 import { HomeComponent } from './components/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -30,6 +31,7 @@ library.add(fas);
     MenuItemComponent,
     CategoryAddComponent,
     CategoryEditComponent,
+    ProductListComponent,
     HomeComponent
   ],
   imports: [

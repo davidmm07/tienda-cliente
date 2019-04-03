@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, EventEmitter, Input, Output, OnInit, ElementRef} from '@angular/core';
 import {Category} from '../models/category';
 import {Sublevel} from '../models/sublevel';
 import {Router} from '@angular/router';
@@ -25,10 +25,13 @@ export class MenuItemComponent implements OnInit {
 	expanded: boolean;
 	@HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
 	@Input() item: Sublevel;
-	@Input() depth: number;		
+	@Input() depth: number;
+	@Output() getleaf = new EventEmitter();
+	public sublevelselected;		
 	constructor(
 		public navService: NavService,
-		public router: Router
+		public router: Router,
+		private el: ElementRef
 		) {
 		if (this.depth === undefined) {
 			this.depth = 0;
@@ -38,8 +41,8 @@ export class MenuItemComponent implements OnInit {
 
 	ngOnInit(){
 		this.navService.currentUrl.subscribe((url:string) => {
-			console.log(url);
-			console.log(this.item);
+			//console.log(url);
+			//console.log(this.item);
 			// routing de productos por subnivel
 			 if (this.item._id && url) {
 			// 	// console.log(`Checking '/${this.item.route}' against '${url}'`);
@@ -52,16 +55,30 @@ export class MenuItemComponent implements OnInit {
 
 	}
 
-	onItemSelected(item: Sublevel) {
-		if (!this.validateSublevels(item)) {
+	getLast(item){
+		this.el.nativeElement.dispatchEvent(new CustomEvent('get-leaf',{
+				detail: item,
+				bubbles: true
+			}));
+		console.log('elemento hijo');
+	}
+
+
+	onItemSelected(item) {
+		if (!this.validateSublevels(item) && item.sublevels != null) {
 			//this.router.navigate([item.route]);  
 			//pendiente routing
+			var sublevelaux = item._id;
+			this.getLast(item);
+			console.log(this.getleaf);
 			this.navService.closeNav(); 
-			console.log('no tiene subniveles');
+			console.log(item);
+			this.sublevelselected = item;
+			//this.getleaf.emit(sublevelaux);
 		}
 		if (this.validateSublevels(item)) {
 			this.expanded = !this.expanded;
-			console.log('tiene subniveles');
+			//console.log('tiene subniveles');
 		}
 	}
 	validateSublevels(item){

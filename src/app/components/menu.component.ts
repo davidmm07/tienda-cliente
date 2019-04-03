@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild,Input, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { GLOBAL } from '../services/global';
 import { UserService } from '../services/user.service';
 import { StoreService } from '../services/store.service';
 import { NavService } from '../services/nav.service';
+import { MenuItemComponent} from './menu-item.component';
 import { Category } from '../models/category';
+import { Sublevel } from '../models/sublevel';
+import { Observable, throwError } from 'rxjs';
 
 
 @Component({
@@ -15,11 +18,14 @@ import { Category } from '../models/category';
 //Menu
 export class MenuComponent implements  AfterViewInit{
 	@ViewChild('appDrawer') appDrawer: ElementRef;	
+	@ViewChild('MenuItemComponent') menuItemComponent: MenuItemComponent;
+	@Input() item : Sublevel;	
 	public titulo:string;
-	public categories: Category[];
+	public categories: Category;
 	public identity;
 	public token;
 	public url:string;
+	public itemselected:Sublevel;
 	public alertMessage;
 	constructor(
 		private _route: ActivatedRoute,
@@ -49,6 +55,11 @@ export class MenuComponent implements  AfterViewInit{
 		//Conseguir el listado de Categorias
 	}
 
+	onGetLeaf($event)	{
+		this.itemselected = $event.detail;
+		console.log(this.itemselected); 
+
+	}	
 	ngOnInit(){
 		console.log('menu reemplaza a category-list.component.ts cargado'+this.identity.name);
 		
@@ -57,7 +68,10 @@ export class MenuComponent implements  AfterViewInit{
 	ngAfterViewInit() {
 		this.navService.appDrawer = this.appDrawer;
 		this.getCategories();
+		
 
-	}	
+	}
+
+
 
 }

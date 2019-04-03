@@ -9,6 +9,6 @@
   </span>
 </a>
 <div *ngIf="expanded">
-  <menu-item *ngFor="let child of item.sublevels" [item]="child" [depth]="depth+1">
+  <menu-item *ngFor="let child of item.sublevels" [item]="child" [depth]="depth+1" (get-leaf)="getLast($event)">
   </menu-item>
 </div>
