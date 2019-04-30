@@ -33,7 +33,9 @@ import {
   MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
+  MatSortModule,
   MatTabsModule,
+  MatTableModule,
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
@@ -75,7 +77,9 @@ import {
     MatSlideToggleModule,
     MatSliderModule,
     MatSnackBarModule,
+    MatSortModule,
     MatTabsModule,
+    MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
     MatNativeDateModule,

@@ -7,3 +7,58 @@
 		{{alertMessage}}
 	</div>      
 </div>
+
+<div class="card" style="width: 25rem;">
+  <div class="card-header">
+    Filtros
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><mat-checkbox (change)="updateFilter()" [(ngModel)]="level.active" *ngFor="let level of levelsToShow">{{level.name}} <br/></mat-checkbox></li>
+    <li class="list-group-item"> 
+      <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+     </li>
+  </ul>
+</div>
+
+
+<mat-table [dataSource]="dataSource" matSort>
+  <!-- User name Definition -->
+  <ng-container cdkColumnDef="name">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header > 
+      <div>
+       <mat-form-field>
+        <input matInput class="form-field" [formControl]="nameFilter" placeholder="Nombre">
+      </mat-form-field>      
+    </div> 
+     </mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> {{row.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Age Definition -->
+  <ng-container cdkColumnDef="price">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header > Precio </mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> {{row.price}} </mat-cell>
+  </ng-container>
+
+  <!-- Title Definition -->
+  <ng-container cdkColumnDef="availability" >
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header > Disponibilidad
+
+    </mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> {{row.available ? 'disponible':'no disponible'}} </mat-cell>
+  </ng-container>
+  <!-- Title Definition -->
+  <ng-container cdkColumnDef="quantity" >
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header > 
+      <div>
+       <mat-form-field>
+        <input matInput class="form-field" [formControl]="quantityFilter" placeholder="Cantidad">
+      </mat-form-field>      
+    </div> </mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> {{row.quantity}} </mat-cell>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <mat-header-row *cdkHeaderRowDef="displayedColumns; sticky: true" ></mat-header-row>
+  <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

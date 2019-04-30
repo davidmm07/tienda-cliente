@@ -17,9 +17,9 @@
 
 <div class="row">
 	
-	<div class="col-lg-6" >	
-		<mat-sidenav-container >
-			<mat-sidenav #appDrawer mode="side" opened="false">
+	<div >	
+		<mat-sidenav-container [hasBackdrop]="true">
+			<mat-sidenav #appDrawer mode="side"  opened="false">
 				<mat-nav-list>
 					<menu-item *ngFor="let item of categories" [item]="item" (get-leaf)="onGetLeaf($event)"></menu-item> 
 				</mat-nav-list>
@@ -27,7 +27,7 @@
 
 		</mat-sidenav-container>
 	</div>
-	<div class="col-lg-6" *ngIf="itemselected">
+	<div class="col-lg-8" *ngIf="itemselected">
 
 					<product-list [sublevelnotchild]="itemselected"></product-list> 
 	</div>	
